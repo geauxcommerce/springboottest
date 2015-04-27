@@ -19,6 +19,8 @@ target/
 
 # Package Files #
 *.jar
+# Allow gradle-wrapper.jar to be committed
+!gradle-wrapper.jar
 *.war
 *.ear
 

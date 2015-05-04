@@ -1,10 +1,13 @@
 # springboottest
 
-# Commands
+## Status
+[![Circle CI](https://circleci.com/gh/geauxcommerce/springboottest.svg?style=svg)](https://circleci.com/gh/geauxcommerce/springboottest)
+
+# Docker Commands
 
 ## To build the docker image
 
-	$ docker build -f src/main/docker/Dockerfile -t geauxcommerce/springbootservice .
+	$ docker build -t geauxcommerce/springbootservice .
 
 ## To see the docker images available
 

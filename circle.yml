@@ -5,17 +5,17 @@ machine:
 dependencies:
     override:
         - ./gradlew dependencies
-        - ./gradlew build test
-        - docker info
-        - docker build -t geauxcommerce/springbootservice .
         
 test:
     override:
+        - ./gradlew test
+        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+        - find . -type f -regex ".*/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+        - docker info
+        - docker build -t geauxcommerce/springbootservice .
         - docker run -d -p 8080:8080 --name springbootservice geauxcommerce/springbootservice; sleep 10
         - curl --retry 10 --retry-delay 5 -v http://localhost:8080
         - cp build/libs/* $CIRCLE_ARTIFACTS
-        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-        - find . -type f -regex ".*/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
         
 deployment:
     hub:

@@ -14,6 +14,7 @@ test:
         - ./gradlew jacocoTestReport
         - mkdir -p $CIRCLE_ARTIFACTS/jacocoHtml
         - cp -r build/jacocoHtml/* $CIRCLE_ARTIFACTS/jacocoHtml
+        - cp -r build/jacocoHtml/.* $CIRCLE_ARTIFACTS/jacocoHtml
         - docker info
         - docker build -t geauxcommerce/springbootservice .
         - docker run -d -p 8080:8080 --name springbootservice geauxcommerce/springbootservice; sleep 10

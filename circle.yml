@@ -11,6 +11,9 @@ test:
         - ./gradlew build test
         - mkdir -p $CIRCLE_TEST_REPORTS/junit/
         - find . -type f -regex ".*/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+        - ./gradlew jacocoTestReport
+        - mkdir -p $CIRCLE_ARTIFACTS/jacocoHtml
+        - cp -r build/jacocoHtml/* $CIRCLE_ARTIFACTS/jacocoHtml
         - docker info
         - docker build -t geauxcommerce/springbootservice .
         - docker run -d -p 8080:8080 --name springbootservice geauxcommerce/springbootservice; sleep 10

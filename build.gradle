@@ -36,13 +36,8 @@ repositories {
     maven { url "http://repo.spring.io/milestone" }
 }
 
-configurations {
-    compile.exclude module: "spring-boot-starter-tomcat"
-}
-
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-jetty")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("com.jayway.restassured:rest-assured:2.4.1")
 }

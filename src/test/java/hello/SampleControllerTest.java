@@ -23,29 +23,29 @@ import static org.hamcrest.Matchers.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SampleController.class)
 @WebAppConfiguration
-// @IntegrationTest("server.port:0")
-@IntegrationTest
+@IntegrationTest("server.port:0")
 public class SampleControllerTest {
 	
 	@Autowired
 	EmbeddedWebApplicationContext server;
 	
-	// @Value("${local.server.port}")
-	// int port;
+	 @Value("${local.server.port}")
+	 int port;
 	
 	@Before
 	public void setUp() {
 		
-//		 RestAssured.port = port;
-		RestAssured.keystore("keystore.p12", "localhost");
-		RestAssured.useRelaxedHTTPSValidation();
+    	RestAssured.port = port;
+//		RestAssured.keystore("keystore.p12", "localhost");
+//		RestAssured.useRelaxedHTTPSValidation();
 		
 	}
 	
 	@Test
 	public void canFetchHomePage() {
 		when().
-				get("https://localhost:8443").
+//				get("https://localhost:8443").
+				get("/").
 		then().
 				statusCode(HttpStatus.SC_OK).
 				assertThat().body(containsString("Hello World!"));

@@ -48,7 +48,7 @@ public class SampleControllerTest {
 				get("/").
 		then().
 				statusCode(HttpStatus.SC_OK).
-				assertThat().body(containsString("Nicholas"));
+				assertThat().body(containsString("Hello"));
 		
 	}
 

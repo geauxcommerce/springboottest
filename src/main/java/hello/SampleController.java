@@ -17,6 +17,7 @@ public class SampleController {
 	
     @RequestMapping("/")
     @ResponseBody
+    @CrossOrigin
     String home() {
     	
     	// repository.deleteAll();
